@@ -1,0 +1,57 @@
+* {
+  cursor: none !important;
+}
+
+body::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* The background track */
+body::-webkit-scrollbar-track {
+  background: #0d0d11; /* Sleek, dark background */
+  border-radius: 10px;
+}
+
+/* The draggable thumb */
+body::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accentColor), #0d0d11); /* Boujee gradient */
+  border-radius: 10px;
+  border: 2px solid #0d0d11; /* Creates a padding effect around the thumb */
+  transition: all 0.3s ease;
+}
+
+/* Thumb hover behavior */
+body::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accentColor), #0d0d11);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); /* Glowing effect */
+}
+
+.section-container {
+  width: 1300px;
+}
+.title,
+.para {
+  font-kerning: none;
+  -webkit-text-rendering: optimizeSpeed;
+  text-rendering: optimizeSpeed;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+@media only screen and (max-width: 1600px) {
+  .section-container {
+    width: 1200px;
+    max-width: calc(100% - 160px);
+  }
+}
+@media only screen and (max-width: 1400px) {
+  .section-container {
+    width: 900px;
+  }
+}
+@media only screen and (max-width: 900px) {
+  .section-container {
+    width: 500px;
+    max-width: var(--cWidth);
+  }
+}
