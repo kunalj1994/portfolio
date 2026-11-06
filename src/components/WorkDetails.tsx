@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { MdArrowBack, MdArrowForward, MdClose } from "react-icons/md";
 import "./styles/WorkDetails.css";
@@ -22,6 +22,18 @@ interface WorkDetailsProps {
 
 const WorkDetails = ({ project, onClose }: WorkDetailsProps) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<number>(0);
+  const goToNextRef = useRef(() => {});
+
+  useEffect(() => {
+    intervalRef.current = window.setInterval(() => {
+      goToNextRef?.current();
+    }, 2500);
+
+    return () => {
+      window.clearInterval(intervalRef.current);
+    };
+  }, []);
 
   const goToPrev = useCallback(() => {
     const newIndex = currentIndex === 0 ? project.images.length - 1 : currentIndex - 1;
@@ -32,6 +44,10 @@ const WorkDetails = ({ project, onClose }: WorkDetailsProps) => {
     const newIndex = currentIndex === project.images.length - 1 ? 0 : currentIndex + 1;
     setCurrentIndex(newIndex);
   }, [currentIndex]);
+
+  useEffect(() => {
+    goToNextRef.current = goToNext;
+  }, [goToNext]);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

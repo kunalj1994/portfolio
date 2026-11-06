@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import "./styles/Work.css";
 import { MdArrowBack, MdArrowForward } from "react-icons/md";
 import WorkImage from "./WorkImage";
@@ -114,6 +114,20 @@ const Work = () => {
   const [isAnimating, setIsAnimating] = useState(false);
   const [selectedProject, setSelectedProject] = useState<WorkProject | null>(null);
 
+  const intervalRef = useRef<number>(0);
+  const goToNextRef = useRef(() => {});
+
+  useEffect(() => {
+    intervalRef.current = window.setInterval(() => {
+      if (selectedProject) return;
+      goToNextRef?.current();
+    }, 2500);
+
+    return () => {
+      window.clearInterval(intervalRef.current);
+    };
+  }, [selectedProject]);
+
   const closeModal = useCallback(() => {
     setSelectedProject(null);
   }, []);
@@ -137,6 +151,10 @@ const Work = () => {
     const newIndex = currentIndex === projects.length - 1 ? 0 : currentIndex + 1;
     goToSlide(newIndex);
   }, [currentIndex, goToSlide]);
+
+  useEffect(() => {
+    goToNextRef.current = goToNext;
+  }, [goToNext]);
 
   return (
     <>
