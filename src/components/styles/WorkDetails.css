@@ -1,0 +1,346 @@
+.work-details-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  background: rgba(3, 6, 13, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  animation: workOverlayIn 0.25s ease;
+}
+
+.work-details-container {
+  overflow: auto;
+  height: 400px;
+}
+
+.tech-stack {
+  border-radius: 999px;
+  padding: 3px 10px;
+  background: rgba(255, 255, 255, 0.15);
+  margin: 4px;
+  font-size: 13px;
+  display: inline-block;
+}
+
+.image-carousel-track-container {
+  overflow: hidden;
+  width: 100%;
+  background: radial-gradient(circle at center, rgba(65, 230, 207, 0.09), transparent 65%), #0b0e17;
+}
+
+.image-carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.image-carousel-slide {
+  min-width: 100%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+}
+
+.work-details-container::-webkit-scrollbar {
+  width: 10px; /* Width of the vertical scrollbar */
+  height: 10px; /* Height of the horizontal scrollbar */
+}
+
+/* The background track */
+.work-details-container::-webkit-scrollbar-track {
+  background: #0d0d11; /* Sleek, dark background */
+  border-radius: 10px;
+}
+
+/* The draggable thumb */
+.work-details-container::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--accentColor), #0d0d11); /* Boujee gradient */
+  border-radius: 10px;
+  border: 2px solid #0d0d11; /* Creates a padding effect around the thumb */
+  transition: all 0.3s ease;
+}
+
+/* Thumb hover behavior */
+.work-details-container::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--accentColor), #0d0d11);
+  box-shadow: 0 0 10px rgba(255, 0, 127, 0.5); /* Glowing effect */
+}
+
+.work-details-overlay,
+.work-details-overlay * {
+  cursor: auto !important;
+}
+
+.work-details-modal {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  width: 100%;
+  max-width: 1050px;
+  max-height: 85vh;
+  overflow: hidden;
+  background: #10131d;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  box-shadow: 0 25px 100px rgba(0, 0, 0, 0.5);
+  animation: workModalIn 0.3s ease;
+}
+
+.work-details-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: #e8e5ed;
+  background: rgba(20, 24, 34, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  font-size: 23px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.work-details-close:hover {
+  color: #55e6d0;
+  border-color: #55e6d0;
+  transform: rotate(90deg);
+}
+
+.work-details-section ul {
+  padding-inline-start: 20px;
+}
+
+.work-details-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 450px;
+  padding: 35px;
+}
+
+.image-bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 20px 35px;
+}
+
+.image-carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.image-carousel-arrow {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #eae5ec;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(8px);
+}
+
+.image-carousel-arrow * {
+  pointer-events: none;
+  cursor: pointer !important;
+}
+
+.image-carousel-arrow:hover {
+  background: rgba(94, 234, 212, 0.15);
+  border-color: var(--accentColor);
+  color: var(--accentColor);
+  cursor: pointer !important;
+  box-shadow: 0 0 20px rgba(94, 234, 212, 0.15);
+}
+
+.work-details-image img {
+  display: block;
+  width: 100%;
+  max-width: 450px;
+  max-height: 450px;
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.work-details-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  padding: 55px 45px;
+  overflow-y: auto;
+}
+
+.work-details-category {
+  color: #55e6d0;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.work-details-content h2 {
+  margin: 0;
+  color: #eeeaf3;
+  font-size: clamp(30px, 4vw, 42px);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.work-details-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.work-details-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.work-details-section h3 {
+  margin: 0;
+  color: #e9e5ed;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.work-details-section p {
+  margin: 0;
+  color: #9999a5;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.work-details-link {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  padding: 13px 22px;
+  color: #09131a;
+  background: #55e6d0;
+  border: 1px solid #55e6d0;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.work-details-link:hover {
+  color: #55e6d0;
+  background: transparent;
+}
+
+.work-details-link svg {
+  font-size: 18px;
+}
+
+@keyframes workOverlayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes workModalIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Tablet */
+@media (max-width: 850px) {
+  .work-details-modal {
+    grid-template-columns: 1fr;
+    max-width: 600px;
+    overflow-y: auto;
+  }
+
+  .work-details-image {
+    min-height: 280px;
+    max-height: 320px;
+    padding: 30px;
+  }
+
+  .work-details-image img {
+    max-height: 260px;
+  }
+
+  .work-details-content {
+    padding: 35px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 550px) {
+  .work-details-overlay {
+    padding: 15px;
+  }
+
+  .work-details-modal {
+    max-height: 90vh;
+  }
+
+  .work-details-image {
+    min-height: 200px;
+    max-height: 220px;
+    padding: 20px;
+  }
+
+  .work-details-image img {
+    max-height: 180px;
+  }
+
+  .work-details-content {
+    gap: 16px;
+    padding: 28px 22px;
+  }
+
+  .work-details-content h2 {
+    font-size: 29px;
+  }
+
+  .work-details-section p {
+    font-size: 14px;
+  }
+
+  .work-details-close {
+    top: 12px;
+    right: 12px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work-details-overlay,
+  .work-details-modal {
+    animation: none;
+  }
+}
