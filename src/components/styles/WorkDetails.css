@@ -80,8 +80,10 @@
   grid-template-columns: 1.05fr 1fr;
   width: 100%;
   max-width: 1050px;
-  max-height: 85vh;
-  overflow: hidden;
+  max-height: calc(100dvh - 40px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background: #10131d;
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 12px;
